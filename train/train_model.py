@@ -1,18 +1,17 @@
-
+from . import config
 import re
 import numpy as np
 import pandas as pd
 from data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
 from data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
+import joblib
 
 
-from . import config
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, f1_score
-import sys
+
 
 
 def get_data(URL):
@@ -55,11 +54,11 @@ def get_data(URL):
     
     df.to_csv(config.DATASETS_DIR + config.RETRIEVED_DATA, index=False)
     
-    return print('Data stored in {}'.format(config.DATASETS_DIR + config.RETRIEVED_DATA))
+    #return print('Data stored in {}'.format(config.DATASETS_DIR + config.RETRIEVED_DATA))
 
 
 def train():
-
+ get_data()
  titanic_pipeline = Pipeline(
                               [
                                 ('missing_indicator', MissingIndicator(variables=config.NUMERICAL_VARS)),
@@ -84,14 +83,13 @@ def train():
 
  titanic_pipeline.fit(X_train, y_train)
 
-    
- class_pred = titanic_pipeline.predict(X_test)
- proba_pred = titanic_pipeline.predict_proba(X_test)[:,1]
- #print('test roc-auc : {}'.format(roc_auc_score(y_test, proba_pred)))
- #print('test accuracy: {}'.format(accuracy_score(y_test, class_pred)))
- #print()
+ save_file_name = f'{config.PIPELINE_SAVE_FILE}'
+ save_path = config.TRAINED_MODEL_DIR + save_file_name
 
+ pipeline_to_persist = titanic_pipeline
 
+ joblib.dump(pipeline_to_persist, save_path)
 
 if __name__ == "__main__":
+   
     train()
