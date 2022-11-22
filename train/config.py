@@ -22,3 +22,8 @@ CATEGORICAL_NA_NOT_ALLOWED = [var for var in CATEGORICAL_VARS if var not in CATE
 
 
 SEED_MODEL = 404
+
+TRAINED_MODEL_DIR = 'trained_models/'
+PIPELINE_NAME = 'logistic_regression'
+PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
+
