@@ -90,3 +90,6 @@ def train():
 
  joblib.dump(pipeline_to_persist, save_path)
 
+if __name__ == "__main__":
+    get_data()
+    train()
