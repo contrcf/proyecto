@@ -13,6 +13,6 @@ DATA_DIR = os.path.realpath(os.path.join(BASE_DIR, "data"))
 
 TARGET = "survived"
 
-TRAINED_MODEL_DIR = 'trained_models/'
+TRAINED_MODEL_DIR = './train/trained_models/'
 PIPELINE_NAME = 'logistic_regression'
 PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
