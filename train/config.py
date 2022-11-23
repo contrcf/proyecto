@@ -1,3 +1,6 @@
+import os
+BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), ".."))
+
 DATASETS_DIR = 'data/' 
 URL = 'https://www.openml.org/data/get_csv/16826755/phpMYEkMl'
 DROP_COLS = ['boat','body','home.dest','ticket','name']
