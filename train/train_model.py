@@ -1,11 +1,11 @@
-from . import config
+
 import re
 import numpy as np
 import pandas as pd
 from data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
 from data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
 import joblib
-
+from . import config
 
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
@@ -14,10 +14,10 @@ from sklearn.model_selection import train_test_split
 
 
 
-def get_data(URL):
+def get_data():
      
     # Loading data from specific url
-    df = pd.read_csv(URL)
+    df = pd.read_csv(config.URL)
     
     # Uncovering missing data
     df.replace('?', np.nan, inplace=True)
@@ -50,7 +50,7 @@ def get_data(URL):
     df['title'] = df['name'].apply(get_title)
     
     # Droping irrelevant columns
-    df.drop(columns=config.DROP_COLS, 1, inplace=True)
+    df.drop(columns=config.DROP_COLS, inplace=True)
     
     df.to_csv(config.DATASETS_DIR + config.RETRIEVED_DATA, index=False)
     
@@ -58,7 +58,7 @@ def get_data(URL):
 
 
 def train():
- get_data()
+
  titanic_pipeline = Pipeline(
                               [
                                 ('missing_indicator', MissingIndicator(variables=config.NUMERICAL_VARS)),
@@ -91,5 +91,5 @@ def train():
  joblib.dump(pipeline_to_persist, save_path)
 
 if __name__ == "__main__":
-   
+    get_data()
     train()
