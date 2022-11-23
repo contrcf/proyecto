@@ -32,7 +32,7 @@ async def healthcheck():
 @app.post("/passanger_predictor")
 async def classify(Passenger_features: Passenger):
 
-    logger.debug(f"Incoming iris features to the server: {Passenger_features}")
+    logger.debug(f"Incoming passanger features to the server: {Passenger_features}")
     Passenger_Predictor = PassengerPredictor()
     response = JSONResponse(Passenger_Predictor.predict_passanger(Passenger_features))
     logger.debug(f"Outgoing classification from the server: {response}")
