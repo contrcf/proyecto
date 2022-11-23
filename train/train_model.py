@@ -5,7 +5,7 @@ import pandas as pd
 from data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
 from data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
 import joblib
-from . import config
+import config
 
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression

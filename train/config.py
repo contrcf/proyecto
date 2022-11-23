@@ -1,7 +1,7 @@
 import os
 BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), ".."))
 
-DATASETS_DIR = 'data/' 
+DATASETS_DIR = './train/data/' 
 URL = 'https://www.openml.org/data/get_csv/16826755/phpMYEkMl'
 DROP_COLS = ['boat','body','home.dest','ticket','name']
 RETRIEVED_DATA = 'raw-data.csv'
@@ -26,7 +26,7 @@ CATEGORICAL_NA_NOT_ALLOWED = [var for var in CATEGORICAL_VARS if var not in CATE
 
 SEED_MODEL = 404
 
-TRAINED_MODEL_DIR = 'trained_models/'
+TRAINED_MODEL_DIR = './train/trained_models/'
 PIPELINE_NAME = 'logistic_regression'
 PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
 
