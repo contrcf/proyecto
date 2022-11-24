@@ -1,5 +1,5 @@
 import logging
-
+import json
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
 
@@ -14,6 +14,7 @@ formatter = logging.Formatter("%(levelname)s: %(asctime)s|%(name)s|%(message)s")
 file_handler = logging.FileHandler("server.log")
 file_handler.setFormatter(formatter)
 
+'''
 app = FastAPI()
 
 
@@ -37,3 +38,27 @@ async def classify(Passenger_features: Passenger):
     response = JSONResponse(Passenger_Predictor.predict_passanger(Passenger_features))
     logger.debug(f"Outgoing classification from the server: {response}")
     return response
+
+'''
+if __name__ == "__main__":
+
+
+  prueba = '{"survived":0,"pclass":1,"sex":"male","age":58.0,"sibsp":0,"parch":2,"fare":113.275,"cabin":"D48","embarked":"C","title":"Mr"}'
+  
+  Pssngr=Passenger
+  Pssngr.Survived=1
+  Pssngr.Pclass=[1,2,3]
+  Pssngr.Sex=['male','female','male',]
+  Pssngr.Age=[58,59,60]
+  Pssngr.SibSp=[0,0,1]
+  Pssngr.Parch=[2,2,2]
+  Pssngr.Fare=[113.27,110.10,120.20]
+  Pssngr.Cabin=['D48','D50','B09']
+  Pssngr.Embarked=['S','C','Q']
+  Pssngr.Title=['Mr','Miss','Mrs']
+
+  PassPrep=PassengerPredictor()
+  PassPrep.predict_passanger(Pssngr)
+  
+  print('DOne')
+

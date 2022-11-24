@@ -16,3 +16,11 @@ TARGET = "survived"
 TRAINED_MODEL_DIR = './train/trained_models/'
 PIPELINE_NAME = 'logistic_regression'
 PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
+
+NUMERICAL_VARS = ['pclass','age','sibsp','parch','fare']
+CATEGORICAL_VARS = ['sex','cabin','embarked','title']
+
+NUMERICAL_VARS_WITH_NA = ['age','fare']
+CATEGORICAL_VARS_WITH_NA = ['cabin','embarked']
+NUMERICAL_NA_NOT_ALLOWED = [var for var in NUMERICAL_VARS if var not in NUMERICAL_VARS_WITH_NA]
+CATEGORICAL_NA_NOT_ALLOWED = [var for var in CATEGORICAL_VARS if var not in CATEGORICAL_VARS_WITH_NA]

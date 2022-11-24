@@ -11,6 +11,7 @@ class Passenger(BaseModel):
     Cabin: float
     Sex: str
     Embarked: str
+    Title: str
     
     
     

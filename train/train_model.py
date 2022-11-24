@@ -78,11 +78,13 @@ def train():
                                                         df.drop(config.TARGET, axis=1),
                                                         df[config.TARGET],
                                                         test_size=0.2,
-                                                        random_state=404
+                                                        random_state=404 
                                                    )
+
 
  titanic_pipeline.fit(X_train, y_train)
 
+   
  save_file_name = f'{config.PIPELINE_SAVE_FILE}'
  save_path = config.TRAINED_MODEL_DIR + save_file_name
 
