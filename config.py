@@ -16,7 +16,7 @@ TEST_DATA_FILE  = DATASETS_DIR + 'test.csv'
 
 
 TARGET = 'Survived'
-FEATURES = ['Pclass','sex','age','sibsp','parch','fare','cabin','embarked','title']
+FEATURES = ['pclass','sex','age','sibsp','parch','fare','cabin','embarked','title']
 NUMERICAL_VARS = ['pclass','age','sibsp','parch','fare']
 CATEGORICAL_VARS = ['sex','cabin','embarked','title']
 
