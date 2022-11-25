@@ -2,7 +2,7 @@ import json
 import logging
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
-from .train_model import GetDataTrainModel
+from train_model import GetDataTrainModel
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -26,14 +26,11 @@ async def healthcheck():
 
 @app.post("/passangertrainmodel")
 async def getdatatrainmodel():
-
     logger.debug(f"Obtaining data and training model")
     ObtainData = GetDataTrainModel 
     ObtainData.get_data()
     ObtainData.train()
-    
     logger.debug(f"Model traind and stored")
-
     return "Model trained, ready to go!"
 
 

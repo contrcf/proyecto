@@ -1,16 +1,14 @@
-import logging
 import json
+import logging
 from fastapi import FastAPI
-from starlette.responses import JSONResponse
-
-from predictor.passenger_predictor import PassengerPredictor as PassengerPredictor
 from models.models import Passenger
+from starlette.responses import JSONResponse
+from predictor.passenger_predictor import PassengerPredictor as PassengerPredictor
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-
 formatter = logging.Formatter("%(levelname)s: %(asctime)s|%(name)s|%(message)s")
-
 file_handler = logging.FileHandler("server.log")
 file_handler.setFormatter(formatter)
 
@@ -32,7 +30,6 @@ async def healthcheck():
 
 @app.post("/passanger_predictor")
 async def classify(Passenger_features: Passenger):
-
     logger.debug(f"Incoming passanger features to the server: {Passenger_features}")
     Passenger_Predictor = PassengerPredictor()
     response = JSONResponse(Passenger_Predictor.predict_passanger(Passenger_features))
