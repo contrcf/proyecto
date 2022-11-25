@@ -14,7 +14,7 @@ formatter = logging.Formatter("%(levelname)s: %(asctime)s|%(name)s|%(message)s")
 file_handler = logging.FileHandler("server.log")
 file_handler.setFormatter(formatter)
 
-'''
+
 app = FastAPI()
 
 
@@ -62,3 +62,4 @@ if __name__ == "__main__":
   
   print('DOne')
 
+'''
