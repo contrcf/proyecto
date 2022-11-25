@@ -47,5 +47,5 @@ uvicorn train.model:app --port 5002 --reload
 # Example request.
 Run a quest to predict a passanger
 ```
-curl 'http://localhost:8080/iris/classify_iris' -X POST -H 'Content-Type: application/json' -d '{"sepal_l": 5, "sepal_w": 2, "petal_l": 3, "petal_w": 4}'
+curl 'http://localhost:5010/' -X POST -H 'Content-Type: application/json' -d '{"sepal_l": 5, "sepal_w": 2, "petal_l": 3, "petal_w": 4}'
 ```
