@@ -26,9 +26,8 @@ pip install -r requirements.txt
 $ pytest tests/integration/ -v
 ````
 ````
-tests/integration/test_integration.py::test_integration PASSED                                                                                [ 33%]
-tests/integration/test_integration.py::test_integration_parametrize[5-5-5/4-3/4-5] PASSED                                                     [ 66%]
-tests/integration/test_integration.py::test_integration_parametrize[8-7/5-15-3/8-137.475] PASSED                                              [100%]
+tests/integration/test_integration.py::test_integration PASSED                                                                                [100%]
+
 ````
 
 # Run FastAPI
