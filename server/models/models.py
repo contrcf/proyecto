@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 
 class Passenger(BaseModel):
+    """ """
     Survived: float
     Pclass: float
     Age: float

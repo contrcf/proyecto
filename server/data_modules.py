@@ -15,6 +15,7 @@ from sklearn.linear_model import LogisticRegression
 
 
 class MissingIndicator(BaseEstimator, TransformerMixin):
+    """ """
     
     def __init__(self, variables=None):
         if not isinstance(variables, list):
@@ -23,9 +24,33 @@ class MissingIndicator(BaseEstimator, TransformerMixin):
             self.variables = variables
     
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         return self
     
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         X = X.copy()
         for var in self.variables:
             X[var+'_nan'] = X[var].isnull().astype(int)
@@ -34,20 +59,46 @@ class MissingIndicator(BaseEstimator, TransformerMixin):
     
 
 class ExtractLetters(BaseEstimator, TransformerMixin):
+    """ """
     
     def __init__(self):
         self.variable = 'cabin'
     
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         return self
     
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         X = X.copy()
         X[self.variable] = X[self.variable].apply(lambda x: ''.join(re.findall("[a-zA-Z]+", x)) if type(x)==str else x)
         return X
     
 
 class CategoricalImputer(BaseEstimator, TransformerMixin):
+    """ """
     
     def __init__(self, variables=None):
         if not isinstance(variables, list):
@@ -56,9 +107,33 @@ class CategoricalImputer(BaseEstimator, TransformerMixin):
             self.variables = variables
     
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         return self
     
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         X = X.copy()
         for var in self.variables:
             X[var] = X[var].fillna('Missing')
@@ -66,6 +141,7 @@ class CategoricalImputer(BaseEstimator, TransformerMixin):
 
     
 class NumericalImputer(BaseEstimator, TransformerMixin):
+    """ """
     
     def __init__(self, variables=None):
         if not isinstance(variables, list):
@@ -74,6 +150,19 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
             self.variables = variables
     
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         self.median_dict_ = {}
         for var in self.variables:
             self.median_dict_[var] = X[var].median()
@@ -81,6 +170,17 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
         
 
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         X = X.copy()
         for var in self.variables:
             X[var] = X[var].fillna(self.median_dict_[var])
@@ -88,6 +188,7 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
 
     
 class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
+    """ """
     
     def __init__(self, tol=0.05, variables=None):
         self.tol = tol
@@ -97,6 +198,19 @@ class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
             self.variables = variables
                     
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         self.rare_labels_dict = {}
         for var in self.variables:
             t = pd.Series(X[var].value_counts() / np.float(X.shape[0]))
@@ -104,6 +218,17 @@ class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
         return self
     
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         X = X.copy()
         for var in self.variables:
             X[var] = np.where(X[var].isin(self.rare_labels_dict[var]), 'rare', X[var])
@@ -111,6 +236,7 @@ class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
 
 
 class OneHotEncoder(BaseEstimator, TransformerMixin):
+    """ """
     
     def __init__(self, variables=None):
         if not isinstance(variables, list):
@@ -119,10 +245,34 @@ class OneHotEncoder(BaseEstimator, TransformerMixin):
             self.variables = variables
        
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         self.dummies = pd.get_dummies(X[self.variables], drop_first=True).columns
         return self
     
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         X = X.copy()
         X = pd.concat([X, pd.get_dummies(X[self.variables], drop_first=True)], 1)
         X.drop(self.variables, 1, inplace=True)
@@ -137,14 +287,39 @@ class OneHotEncoder(BaseEstimator, TransformerMixin):
 
 
 class OrderingFeatures(BaseEstimator, TransformerMixin):
+    """ """
     def __init__(self):
         return None
             
     def fit(self, X, y=None):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+        y :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         self.ordered_features = X.columns
         return self
     
     def transform(self, X):
+        """
+
+        Parameters
+        ----------
+        X :
+            
+
+        Returns
+        -------
+
+        """
         return X[self.ordered_features]
 
 

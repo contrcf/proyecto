@@ -11,6 +11,7 @@ from server.models.models import Passenger
 sys.path.append("..")
 
 class PassengerPredictor:
+    """ """
 
     def __init__(self):
 
@@ -18,6 +19,17 @@ class PassengerPredictor:
       self.trained_model = joblib.load(filename=file_path)
   
     def predict_passanger(self, passenger:Passenger):
+        """
+
+        Parameters
+        ----------
+        passenger:Passenger :
+            
+
+        Returns
+        -------
+
+        """
         
         prueba = {'pclass':passenger.Pclass,'Survived':passenger.Survived,'sex':passenger.Sex,'age':passenger.Age,'sibsp':passenger.SibSp,'parch':passenger.Parch,'fare':passenger.Fare,'cabin':passenger.Fare,'embarked':passenger.Embarked,'title':passenger.Title}
             

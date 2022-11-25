@@ -50,6 +50,19 @@ Run a quest to predict a passanger to server
 curl 'http://localhost:5001/healthcheck' 
 
 curl 'http://localhost:5001/passanger_predictor' -X POST -H 'Content-Type: application/json' -d '{"survived":0,"pclass":1,"sex":"male","age":58.0,"sibsp":0,"parch":2,"fare":113.275,"cabin":"D48","embarked":"C","title":"Mr"}'
+
+{
+  "Survived": 0,
+  "Pclass": 1,
+  "Age": 20,
+  "SibSp": 0,
+  "Parch": 2,
+  "Fare": 113.275,
+  "Cabin": "D46",
+  "Sex": "female",
+  "Embarked": "c",
+  "Title": "Miss"
+}
 ```
 
 # Example request to trainer.

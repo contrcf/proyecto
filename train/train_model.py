@@ -11,7 +11,8 @@ from train.data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,Ord
 from train.data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
 
 class GetDataTrainModel:
-            def get_data():
+        def get_data():
+                """ """
                 
                 # Loading data from specific url
                 df = pd.read_csv(config.URL)
@@ -23,6 +24,17 @@ class GetDataTrainModel:
 
                 # helper function 1
                 def get_first_cabin(row):
+                    """
+
+                    Parameters
+                    ----------
+                    row :
+                        
+
+                    Returns
+                    -------
+
+                    """
                     try:
                         return row.split()[0]
                     except:
@@ -30,6 +42,17 @@ class GetDataTrainModel:
                 
                 # helper function 2
                 def get_title(passenger):
+                    """
+
+                    Parameters
+                    ----------
+                    passenger :
+                        
+
+                    Returns
+                    -------
+
+                    """
                     line = passenger
                     if re.search('Mrs', line):
                         return 'Mrs'
@@ -52,8 +75,9 @@ class GetDataTrainModel:
                 
                 return print('Data stored in Succesfully')
 
-            def train():
-               titanic_pipeline = Pipeline(
+        def train():
+                """ """
+                titanic_pipeline = Pipeline(
                                         [
                                             ('missing_indicator', MissingIndicator(variables=config.NUMERICAL_VARS)),
                                             ('cabin_only_letter', ExtractLetters()),
@@ -65,19 +89,19 @@ class GetDataTrainModel:
                                             ('scaling', MinMaxScaler()),
                                             ('log_reg', LogisticRegression(C=0.0005, class_weight='balanced', random_state=config.SEED_MODEL))
                                         ])
-               df = pd.read_csv(config.DATASETS_DIR + config.RETRIEVED_DATA)
+                df = pd.read_csv(config.DATASETS_DIR + config.RETRIEVED_DATA)
 
-               X_train, X_test, y_train, y_test = train_test_split(
+                X_train, X_test, y_train, y_test = train_test_split(
                                                                     df.drop(config.TARGET, axis=1),
                                                                     df[config.TARGET],
                                                                     test_size=0.2,
                                                                     random_state=404 
                                                             )
 
-               titanic_pipeline.fit(X_train, y_train)
-               save_file_name = f'{config.PIPELINE_SAVE_FILE}'
-               save_path = config.TRAINED_MODEL_DIR + save_file_name
-               pipeline_to_persist = titanic_pipeline
-               joblib.dump(pipeline_to_persist, save_path)
+                titanic_pipeline.fit(X_train, y_train)
+                save_file_name = f'{config.PIPELINE_SAVE_FILE}'
+                save_path = config.TRAINED_MODEL_DIR + save_file_name
+                pipeline_to_persist = titanic_pipeline
+                joblib.dump(pipeline_to_persist, save_path)
                 
 

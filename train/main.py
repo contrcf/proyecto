@@ -14,6 +14,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
+    """ """
     logger.info("Titanic Predictor is ready to go!")
     return "Titanic Train Model is ready to go!"
 
