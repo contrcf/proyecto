@@ -40,12 +40,23 @@ Run next command to start server
 uvicorn server.main:app --port 5001 --reload
 
 Run next command to start model train.
-uvicorn train.model:app --port 5002 --reload
+uvicorn train.main:app --port 5002 --reload
 
 ```
 
-# Example request.
-Run a quest to predict a passanger
+# Example request to sever.
+Run a quest to predict a passanger to server
 ```
-curl 'http://localhost:5010/' -X POST -H 'Content-Type: application/json' -d '{"sepal_l": 5, "sepal_w": 2, "petal_l": 3, "petal_w": 4}'
+curl 'http://localhost:5001/healthcheck' 
+
+curl 'http://localhost:5001/passanger_predictor' -X POST -H 'Content-Type: application/json' -d '{"survived":0,"pclass":1,"sex":"male","age":58.0,"sibsp":0,"parch":2,"fare":113.275,"cabin":"D48","embarked":"C","title":"Mr"}'
+```
+
+# Example request to trainer.
+Run a request to train the model
+```
+curl 'http://localhost:5002/healthcheck' 
+
+curl 'http://localhost:5002/passangertrainmodel' 
+
 ```
