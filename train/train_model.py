@@ -7,15 +7,15 @@ import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
-from data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
+from train.data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
+from train.data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
 
 class GetDataTrainModel:
             def get_data():
                 
                 # Loading data from specific url
                 df = pd.read_csv(config.URL)
-                
+                           
                 # Uncovering missing data
                 df.replace('?', np.nan, inplace=True)
                 df['age'] = df['age'].astype('float')
