@@ -3,16 +3,12 @@ import re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
 from sklearn.base import BaseEstimator, TransformerMixin
-
-
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
-
 
 
 

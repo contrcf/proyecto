@@ -1,19 +1,16 @@
 
 import re
-import numpy as np
-import pandas as pd
-from data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
-from data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
 import joblib
 import config
-
+import numpy as np
+import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
-
 from sklearn.model_selection import train_test_split
+from data_modules import NumericalImputer, MinMaxScaler, OneHotEncoder,OrderingFeatures
+from data_modules import MissingIndicator,ExtractLetters, CategoricalImputer, RareLabelCategoricalEncoder
 
 class GetDataTrainModel:
-
             def get_data():
                 
                 # Loading data from specific url

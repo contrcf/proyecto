@@ -1,20 +1,16 @@
-import logging
 import json
+import logging
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
-from train_model import GetDataTrainModel
+from .train_model import GetDataTrainModel
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-
 formatter = logging.Formatter("%(levelname)s: %(asctime)s|%(name)s|%(message)s")
-
 file_handler = logging.FileHandler("server.log")
 file_handler.setFormatter(formatter)
 
-
 app = FastAPI()
-
 
 @app.get("/")
 def read_root():
