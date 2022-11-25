@@ -81,7 +81,3 @@ class GetDataTrainModel:
                joblib.dump(pipeline_to_persist, save_path)
                 
 
-#if __name__ == "__main__":
- #   GetDataTrainModel.get_data()
- #   GetDataTrainModel.train()
-#

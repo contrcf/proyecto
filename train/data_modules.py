@@ -145,10 +145,3 @@ class OrderingFeatures(BaseEstimator, TransformerMixin):
         return X[self.ordered_features]
 
 
-# scaler = MinMaxScaler()
-# scaler.fit(X_train)
-# X_train = scaler.transform(X_train)
-# X_test  = scaler.transform(X_test)
-
-# model = LogisticRegression(C=0.0005, class_weight='balanced', random_state=SEED_MODEL)
-# model.fit(X_train, y_train)
