@@ -10,13 +10,13 @@ TRAIN_DATA = os.path.realpath(os.path.join(BASE_DIR, "data", "train.csv"))
 DATA_DIR = os.path.realpath(os.path.join(BASE_DIR, "data"))
 
 
-TARGET = "survived"
+TARGET = "Survived"
 
 TRAINED_MODEL_DIR = './train/trained_models/'
 PIPELINE_NAME = 'logistic_regression'
 PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
 
-NUMERICAL_VARS = ['pclass','age','sibsp','parch','fare']
+NUMERICAL_VARS = ['Pclass','age','sibsp','parch','fare']
 CATEGORICAL_VARS = ['sex','cabin','embarked','title']
 
 NUMERICAL_VARS_WITH_NA = ['age','fare']

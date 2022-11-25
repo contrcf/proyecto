@@ -1,5 +1,8 @@
 import os
 BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), ".."))
+REG_MODEL_NAME = os.path.realpath(os.path.join(BASE_DIR, "models", "reg_model.sav"))
+TRAIN_DATA = os.path.realpath(os.path.join(BASE_DIR, "data", "train.csv"))
+DATA_DIR = os.path.realpath(os.path.join(BASE_DIR, "data"))
 
 DATASETS_DIR = './train/data/' 
 URL = 'https://www.openml.org/data/get_csv/16826755/phpMYEkMl'
@@ -12,8 +15,8 @@ TRAIN_DATA_FILE = DATASETS_DIR + 'train.csv'
 TEST_DATA_FILE  = DATASETS_DIR + 'test.csv'
 
 
-TARGET = 'survived'
-FEATURES = ['pclass','sex','age','sibsp','parch','fare','cabin','embarked','title']
+TARGET = 'Survived'
+FEATURES = ['Pclass','sex','age','sibsp','parch','fare','cabin','embarked','title']
 NUMERICAL_VARS = ['pclass','age','sibsp','parch','fare']
 CATEGORICAL_VARS = ['sex','cabin','embarked','title']
 

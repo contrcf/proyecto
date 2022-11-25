@@ -1,9 +1,13 @@
 import json
 import logging
 from fastapi import FastAPI
-from server.models.models import Passenger
 from starlette.responses import JSONResponse
+
+from server.models.models import Passenger
+#from models.models import Passenger
 from server.predictor.passenger_predictor import PassengerPredictor as PassengerPredictor
+#from predictor.passenger_predictor import PassengerPredictor as PassengerPredictor
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -28,6 +32,7 @@ async def healthcheck():
 @app.post("/passanger_predictor")
 async def classify(Passenger_features: Passenger):
     logger.debug(f"Incoming passanger features to the server: {Passenger_features}")
+
     Passenger_Predictor = PassengerPredictor()
     response = JSONResponse(Passenger_Predictor.predict_passanger(Passenger_features))
     logger.debug(f"Outgoing classification from the server: {response}")
@@ -52,7 +57,8 @@ if __name__ == "__main__":
   Pssngr.Title=['Mr','Miss','Mrs']
 
   PassPrep=PassengerPredictor()
-  PassPrep.predict_passanger(Pssngr)
+
+  PassPrep.predict_passanger(prueba)
   
   print('DOne')
 

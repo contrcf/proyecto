@@ -8,7 +8,7 @@ class Passenger(BaseModel):
     SibSp: float
     Parch: float
     Fare: float
-    Cabin: float
+    Cabin: str
     Sex: str
     Embarked: str
     Title: str
